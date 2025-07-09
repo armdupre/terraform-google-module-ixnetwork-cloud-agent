@@ -7,7 +7,6 @@ resource "google_compute_instance" "Instance" {
 		auto_delete = true
 		initialize_params {
 			image = data.google_compute_image.Image.id
-			size = 32
 		}
 	}
 	allow_stopping_for_update = true
