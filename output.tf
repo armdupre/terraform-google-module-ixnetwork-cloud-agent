@@ -1,5 +1,7 @@
 output "Eth0" {
-	"nic_type" : google_compute_instance.Instance.network_interface.0.nic_type
+	value = {
+		"nic_type" : google_compute_instance.Instance.network_interface.0.nic_type
+	}
 }
 
 output "Eth0PublicIpAddress" {
@@ -11,7 +13,9 @@ output "Eth0PublicIpAddress" {
 }
 
 output "Eth1" {
-	"nic_type" : google_compute_instance.Instance.network_interface.1.nic_type
+	value = {
+		"nic_type" : google_compute_instance.Instance.network_interface.1.nic_type
+	}
 }
 
 output "Image" {
