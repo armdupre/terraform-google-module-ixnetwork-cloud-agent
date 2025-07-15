@@ -14,6 +14,7 @@ resource "google_compute_instance" "Instance" {
 	network_interface {
 		network = data.google_compute_network.Eth0VpcNetwork.self_link
 		network_ip = local.Eth0PrivateIpAddress
+		nic_type = local.Eth0NicType
 		subnetwork = data.google_compute_subnetwork.Eth0Subnet.self_link
 		access_config {
 			nat_ip = google_compute_address.Eth0PublicIpAddress.address

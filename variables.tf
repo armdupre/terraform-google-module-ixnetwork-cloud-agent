@@ -1,3 +1,13 @@
+variable "Eth0NicType" {
+	default = "GVNIC"
+	description = "Type of virtual NIC associated with this interface"
+	type = string
+	validation {
+		condition = can(regex("GVNIC", var.Eth0NicType)) || can(regex("VIRTIO_NET", var.Eth0NicType))
+		error_message = "Eth0NicType must be one of (GVNIC | VIRTIO_NET)"
+	}
+}
+
 variable "Eth0PrivateIpAddress" {
 	default = "10.0.10.11"
 	type = string
@@ -14,12 +24,12 @@ variable "Eth0VpcNetworkName" {
 }
 
 variable "Eth1NicType" {
-	default = "VIRTIO_NET"
+	default = "GVNIC"
 	description = "Type of virtual NIC associated with this interface"
 	type = string
 	validation {
 		condition = can(regex("GVNIC", var.Eth1NicType)) || can(regex("VIRTIO_NET", var.Eth1NicType))
-		error_message = "Eth1NicType must be one of (DEFAULT | VIRTIO_NET)"
+		error_message = "Eth1NicType must be one of (GVNIC | VIRTIO_NET)"
 	}
 }
 
