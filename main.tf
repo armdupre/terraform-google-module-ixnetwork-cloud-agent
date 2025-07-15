@@ -23,10 +23,14 @@ resource "google_compute_instance" "Instance" {
 	network_interface {
 		network = data.google_compute_network.Eth1VpcNetwork.self_link
 		network_ip = local.Eth1PrivateIpAddress
+		nic_type = local.Eth1NicType
 		subnetwork = data.google_compute_subnetwork.Eth1Subnet.self_link
 		alias_ip_range {
 			ip_cidr_range = local.Eth1PrivateIpAliases
 		}
+	}
+	network_performance_config {
+		total_egress_bandwidth_tier = local.InstanceTotalEgressBandwidthTier
 	}
 	metadata = {
 		Owner = local.UserEmailTag

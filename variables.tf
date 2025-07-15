@@ -13,6 +13,16 @@ variable "Eth0VpcNetworkName" {
 	type = string
 }
 
+variable "Eth1NicType" {
+	default = "VIRTIO_NET"
+	description = "Type of virtual NIC associated with this interface"
+	type = string
+	validation {
+		condition = can(regex("GVNIC", var.Eth1NicType)) || can(regex("VIRTIO_NET", var.Eth1NicType))
+		error_message = "Eth1NicType must be one of (DEFAULT | VIRTIO_NET)"
+	}
+}
+
 variable "Eth1PrivateIpAddress" {
 	default = "10.0.2.15"
 	type = string
@@ -37,6 +47,16 @@ variable "InstanceId" {
 	default = "agent"
 	description = "Id of the instance of this module that ensures uniqueness"
 	type = string
+}
+
+variable "InstanceTotalEgressBandwidthTier" {
+	default = "DEFAULT"
+	description = "Level of egress bandwidth tier associated with this instance"
+	type = string
+	validation {
+		condition = can(regex("DEFAULT", var.InstanceTotalEgressBandwidthTier)) || can(regex("TIER_1", var.InstanceTotalEgressBandwidthTier))
+		error_message = "InstanceTotalEgressBandwidthTier must be one of (DEFAULT | TIER_1)"
+	}
 }
 
 variable "MachineType" {

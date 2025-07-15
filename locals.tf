@@ -3,12 +3,14 @@ locals {
 	Eth0PublicIpAddressName = "${local.Preamble}-eth0-ip-addr"
 	Eth0SubnetName = var.Eth0SubnetName
 	Eth0VpcNetworkName = var.Eth0VpcNetworkName
+	Eth1NicType = var.Eth1NicType
 	Eth1PrivateIpAddress = var.Eth1PrivateIpAddress
 	Eth1PrivateIpAliases = var.Eth1PrivateIpAliases
 	Eth1SubnetName = var.Eth1SubnetName
 	Eth1VpcNetworkName = var.Eth1VpcNetworkName
 	InstanceId = var.InstanceId
 	InstanceName = "${local.Preamble}-instance"
+	InstanceTotalEgressBandwidthTier = var.InstanceTotalEgressBandwidthTier
 	MachineType = var.MachineType
 	MarketplaceImageName = var.MarketplaceImageName
 	MarketplaceImageProjectId = var.MarketplaceImageProjectId
