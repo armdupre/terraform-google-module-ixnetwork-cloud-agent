@@ -1,3 +1,9 @@
+output "Eth0" {
+	value = {
+		"nic_type" : google_compute_instance.Instance.network_interface.0.nic_type
+	}
+}
+
 output "Eth0PublicIpAddress" {
 	description = "Public ip address resource associated with the first network interface"
 	value = {
