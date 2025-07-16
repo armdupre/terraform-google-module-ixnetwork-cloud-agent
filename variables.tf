@@ -1,13 +1,3 @@
-variable "Eth0NicType" {
-	default = "GVNIC"
-	description = "Type of virtual NIC associated with this interface"
-	type = string
-	validation {
-		condition = can(regex("GVNIC", var.Eth0NicType)) || can(regex("VIRTIO_NET", var.Eth0NicType))
-		error_message = "Eth0NicType must be one of (GVNIC | VIRTIO_NET)"
-	}
-}
-
 variable "Eth0PrivateIpAddress" {
 	default = "10.0.10.11"
 	type = string
@@ -21,16 +11,6 @@ variable "Eth0SubnetName" {
 variable "Eth0VpcNetworkName" {
 	description = "Name of the virtual private cloud associated with the first network interface"
 	type = string
-}
-
-variable "Eth1NicType" {
-	default = "GVNIC"
-	description = "Type of virtual NIC associated with this interface"
-	type = string
-	validation {
-		condition = can(regex("GVNIC", var.Eth1NicType)) || can(regex("VIRTIO_NET", var.Eth1NicType))
-		error_message = "Eth1NicType must be one of (GVNIC | VIRTIO_NET)"
-	}
 }
 
 variable "Eth1PrivateIpAddress" {
@@ -59,23 +39,13 @@ variable "InstanceId" {
 	type = string
 }
 
-variable "InstanceTotalEgressBandwidthTier" {
-	default = "DEFAULT"
-	description = "Level of egress bandwidth tier associated with this instance"
-	type = string
-	validation {
-		condition = can(regex("DEFAULT", var.InstanceTotalEgressBandwidthTier)) || can(regex("TIER_1", var.InstanceTotalEgressBandwidthTier))
-		error_message = "InstanceTotalEgressBandwidthTier must be one of (DEFAULT | TIER_1)"
-	}
-}
-
 variable "MachineType" {
-	default = "c2-standard-30"
+	default = "c2-standard-8"
 	description = "Designation for set of resources available to VM"
 	type = string
 	validation {
-		condition = can(regex("c2-standard-30", var.MachineType)) || can(regex("c2-standard-60", var.MachineType))
-		error_message = "MachineType must be one of (c2-standard-30 | c2-standard-60) types."
+		condition = can(regex("c2-standard-60", var.MachineType)) || can(regex("c2-standard-30", var.MachineType)) || can(regex("c2-standard-16", var.MachineType)) || can(regex("c2-standard-8", var.MachineType)) || can(regex("c2-standard-4", var.MachineType))
+		error_message = "MachineType must be one of (c2-standard-60 | c2-standard-30 | c2-standard-16 | c2-standard-8 | c2-standard-4) types."
 	}
 }
 
