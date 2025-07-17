@@ -45,9 +45,9 @@ variable "MachineType" {
 	type = string
 	validation {
 		condition = contains([	"c4-standard-4",	"c4-standard-8"
-							], var.VmSize)
+							], var.MachineType)
 		error_message = <<EOF
-VmSize must be one of the following sizes:
+MachineType must be one of the following sizes:
 	c4-standard-4, c4-standard-8
 		EOF
 }
