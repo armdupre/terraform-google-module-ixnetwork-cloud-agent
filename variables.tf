@@ -50,6 +50,7 @@ variable "MachineType" {
 MachineType must be one of the following sizes:
 	c4-standard-4, c4-standard-8
 		EOF
+	}
 }
 
 variable "MarketplaceImageName" {
