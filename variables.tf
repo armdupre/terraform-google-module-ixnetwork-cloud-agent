@@ -40,13 +40,16 @@ variable "InstanceId" {
 }
 
 variable "MachineType" {
-	default = "c2-standard-8"
+	default = "c4-standard-8"
 	description = "Designation for set of resources available to VM"
 	type = string
 	validation {
-		condition = can(regex("c2-standard-60", var.MachineType)) || can(regex("c2-standard-30", var.MachineType)) || can(regex("c2-standard-16", var.MachineType)) || can(regex("c2-standard-8", var.MachineType)) || can(regex("c2-standard-4", var.MachineType))
-		error_message = "MachineType must be one of (c2-standard-60 | c2-standard-30 | c2-standard-16 | c2-standard-8 | c2-standard-4) types."
-	}
+		condition = contains([	"c4-standard-4",	"c4-standard-8"
+							], var.VmSize)
+		error_message = <<EOF
+VmSize must be one of the following sizes:
+	c4-standard-4, c4-standard-8
+		EOF
 }
 
 variable "MarketplaceImageName" {
