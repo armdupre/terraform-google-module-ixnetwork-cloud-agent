@@ -29,7 +29,7 @@ resource "google_compute_instance" "Instance" {
 		}
 	}
 	network_performance_config {
-		total_egress_bandwidth_tier = local.InstanceTotalEgressBandwidthTier
+		total_egress_bandwidth_tier = local.TotalEgressBandwidthTier
 	}
 	metadata = {
 		Owner = local.UserEmailTag
