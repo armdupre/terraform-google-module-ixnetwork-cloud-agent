@@ -85,6 +85,16 @@ variable "Tag" {
 	type = string
 }
 
+variable "TotalEgressBandwidthTier" {
+	default = "DEFAULT"
+	description = "Level of egress bandwidth tier associated with this VM instance"
+	type = string
+	validation {
+		condition = contains([ "DEFAULT", "TIER_1" ], var.TotalEgressBandwidthTier)
+		error_message = "TotalEgressBandwidthTier must be one of (DEFAULT | TIER_1)"
+	}
+}
+
 variable "UserEmailTag" {
 	default = "terraform@example.com"
 	description = "Email address tag of user creating the deployment"
