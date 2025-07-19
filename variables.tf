@@ -44,11 +44,11 @@ variable "MachineType" {
 	description = "Designation for set of resources available to VM"
 	type = string
 	validation {
-		condition = contains([	"c4-standard-4",	"c4-standard-8"
+		condition = contains([	"c4-standard-4",	"c4-standard-8",	"c4-standard-48",	"c4-standard-96",	"c4-standard-192"
 							], var.MachineType)
 		error_message = <<EOF
 MachineType must be one of the following types:
-	c4-standard-4, c4-standard-8
+	c4-standard-4, c4-standard-8, c4-standard-48, c4-standard-96, c4-standard-192
 		EOF
 	}
 }
